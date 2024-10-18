@@ -25,7 +25,6 @@ add_task_btn.addEventListener("click", (e) => {
     tasks.appendChild(task);
     input.value = "";
     empty.style.display = "none";
-    console.log(p);
   }
 });
 
