@@ -4,6 +4,29 @@ const tasks = document.querySelector(".container-task");
 const _status = document.querySelector(".task-status-search");
 const category = document.querySelector(".task-category-search");
 const empty = document.querySelector(".empty");
+const opciones_status = document.querySelectorAll(".options-status li a");
+const estado_actual = document.getElementById("actual-state");
+const opciones_category = document.querySelectorAll(".options-category li a");
+const categoria_actual = document.getElementById("actual-category");
+const imagen = document.querySelector("img");
+const cont_opciones_status = document.querySelector(".options-status");
+const cont_opciones_category = document.querySelector(".options-category");
+
+imagen.addEventListener("click", () => {
+  if (cont_opciones_status.style.display === "none") {
+    cont_opciones_status.style.display = "block";
+  } else {
+    cont_opciones_status.style.display = "none";
+  }
+});
+
+opciones_status.forEach(function (opcion) {
+  opcion.addEventListener("click", function (event) {
+    event.preventDefault();
+    const texto_seleccionado = this.textContent;
+    estado_actual.childNodes[0].textContent = texto_seleccionado + " ";
+  });
+});
 
 add_task_btn.addEventListener("click", (e) => {
   e.preventDefault();

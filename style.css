@@ -34,7 +34,7 @@ span {
 }
 
 .container-tasks {
-  height: 65% ;
+  height: 65%;
 }
 
 h1 {
@@ -46,7 +46,10 @@ h1 {
 }
 
 input,
-select {
+.task-status-search,
+.task-category-search,
+.container-task-status-search ul,
+.container-task-category-search ul {
   height: 50px;
   border-radius: 10px;
   border: 1px solid #B0BEC5;
@@ -54,21 +57,52 @@ select {
   padding: 0 10px;
   font-size: 16px;
   margin-right: 10px;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+ul {
+  list-style: none;
+}
+
+li a {
+  display: block;
+  padding: 10px 10px;
+}
+
+li a:hover {
+  background-color: #e5e1e1;
+}
+
+.container-task-status-search ul,
+.container-task-category-search ul {
+  height: auto;
+  display: none;
+  padding: 10px 5px;
+  position: absolute;
+  top: 165px;
+  width: 394px;
 }
 
 input {
   width: 599px;
 }
 
-select {
-  width: 200px;
+img {
+
+  width: 25px;
+  height: 25px;
 }
 
-.container-search .task-status-search, .container-search .task-category-search {
+.container-task-status-search .task-status-search,
+.container-task-category-search .task-category-search {
   width: 384px;
 }
 
-.container-tasks .task-status, .container-tasks .task-category {
+.container-tasks .task-status,
+.container-tasks .task-category {
   width: 524px;
 }
 

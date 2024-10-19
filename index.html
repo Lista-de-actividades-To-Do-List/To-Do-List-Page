@@ -14,18 +14,22 @@
             <h1>Lista de tareas</h1>
             <span class="label-search">
                 <input type="text" placeholder="Agrega una tarea..." />
-                <select class="task-status-search">
-                    <option value="" disabled selected>Estado...</option>
-                    <option value="pendiente">Pendiente</option>
-                    <option value="en-proceso">En proceso</option>
-                    <option value="completada">Completada</option>
-                  </select>
-                  <select class="task-category-search">
-                    <option value="" disabled selected>Categoría...</option>
-                    <option value="personal">Personal</option>
-                    <option value="trabajo">Trabajo</option>
-                    <option value="estudio">Estudio</option>
-                  </select>
+                <div class="container-task-status-search">
+                    <span class="task-status-search" id="actual-state">Estado...<img src="assets\down-arrow.png" alt="Down arrow"></span>
+                    <ul class="options-status">
+                        <li><a>Pendiente</a></li>
+                        <li><a>En proceso</a></li>
+                        <li><a>Completada</a></li>
+                    </ul>
+                </div>
+                <div class="container-task-category-search">
+                    <span class="task-category-search" id="actual-category">Categoría...<img src="assets\down-arrow.png" alt="Down arrow"></span>
+                    <ul class="options-category">
+                        <li><a>Personal</a></li>
+                        <li><a>Trabajo</a></li>
+                        <li><a>Estudio</a></li>
+                    </ul>
+                </div>
                 <button class="add-task-btn">+</button>
             </span>
         </div>
@@ -36,13 +40,13 @@
                     <option value="pendiente">Pendiente</option>
                     <option value="en-proceso">En proceso</option>
                     <option value="completada">Completada</option>
-                  </select>
-                  <select class="task-category">
+                </select>
+                <select class="task-category">
                     <option value="" disabled selected>Categoría...</option>
                     <option value="personal">Personal</option>
                     <option value="trabajo">Trabajo</option>
                     <option value="estudio">Estudio</option>
-                  </select>
+                </select>
                 <button class="filter-task-btn">Filtrar</button>
                 <button class="delete-all-task-btn">Borrar todo</button>
             </span>
