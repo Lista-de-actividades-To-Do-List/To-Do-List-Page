@@ -3,7 +3,6 @@ const add_task_btn = document.querySelector(".add-task-btn");
 const tasks = document.querySelector(".container-task");
 const _status = document.querySelector(".task-status-search");
 const category = document.querySelector(".task-category-search");
-const empty = document.querySelector(".empty");
 const opciones_status = document.querySelectorAll(".options-status li a");
 const estado_actual = document.getElementById("actual-state");
 const opciones_category = document.querySelectorAll(".options-category li a");
@@ -205,6 +204,7 @@ function add_delete_task_button() {
 
 function tareas_empty() {
   const items = document.querySelectorAll(".task");
+  const empty = document.querySelector(".empty");
   if (items.length === 0) {
     empty.style.display = "block";
   } else {
@@ -227,4 +227,19 @@ document.addEventListener("click", (e) => {
     cont_opciones_category.style.display = "none";
     category.classList.remove("active-border");
   }
+});
+
+delete_all_task_btn.addEventListener("click", () => {
+  while (tasks.firstChild) {
+    tasks.removeChild(tasks.firstChild);  
+  }
+  const _empty = document.createElement("div");
+  _empty.classList.add("empty");
+  const empty_p = document.createElement("p");
+  console.log(empty_p);
+  empty_p.textContent = "No tienes tareas pendientes.";
+  console.log(empty_p);
+  _empty.appendChild(empty_p);
+  tasks.appendChild(_empty);
+  tareas_empty();
 });

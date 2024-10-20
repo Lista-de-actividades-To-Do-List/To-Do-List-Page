@@ -214,12 +214,18 @@ img {
   display: flex;
   flex-direction: column;
   row-gap: 10px;
-  padding-top: 15px;
+  margin-top: 15px;
+  padding-right: 5px;
+  overflow-y: auto;
+  height: 350px;
 }
 
 .task {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  justify-content: center;
 }
 
 .task-p,
@@ -293,4 +299,52 @@ img {
     display: inline-block;
     vertical-align: middle;
     align-self: center;
+}
+
+@media (min-width: 1030px) and (max-width: 1450px) {
+  .task-p {
+    width: 400px;
+  }
+  .task-status-p, .task-category-p {
+    width: 200px;
+  }
+  .container-task {
+    height: 300px;
+  }
+}
+
+@media (min-width: 891px) and (max-width: 1030px) {
+  .task-p {
+    width: 350px;
+  }
+  .task-status-p, .task-category-p {
+    width: 150px;
+  }
+  .container-task {
+    height: 300px;
+  }
+}
+
+@media (min-width: 631px) and (max-width: 891px) {
+  .task-p {
+    width: 200px;
+  }
+  .task-status-p, .task-category-p {
+    width: 100px;
+  }
+  .container-task {
+    height: 260px;
+  }
+}
+
+@media (max-width: 631px) {
+  .task-p {
+    width: 100px;
+  }
+  .task-status-p, .task-category-p {
+    width: 90px;
+  }
+  .container-task {
+    height: 240px;
+  }
 }
