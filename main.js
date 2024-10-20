@@ -12,10 +12,11 @@ const arrow_status = document.getElementById("arrow-status");
 const cont_opciones_status = document.querySelector(".options-status");
 const cont_opciones_category = document.querySelector(".options-category");
 const arrow_category = document.getElementById("arrow-category");
+const delete_all_task_btn = document.querySelector(".delete-all-task-btn");
 
 tareas_empty();
 
-cont_opciones_status.style.display = "none"; 
+cont_opciones_status.style.display = "none";
 cont_opciones_category.style.display = "none";
 
 arrow_status.addEventListener("click", () => {
@@ -78,15 +79,21 @@ add_task_btn.addEventListener("click", (e) => {
   if (text_input !== "") {
     const task = document.createElement("div");
     task.classList.add("task");
-    const p_input = document.createElement("p");
-    const p_status = document.createElement("p");
-    const p_category = document.createElement("p");
-    p_input.textContent = text_input;
-    p_status.textContent = text_status;
-    p_category.textContent = text_category;
-    task.appendChild(p_input);
-    task.appendChild(p_status);
-    task.appendChild(p_category);
+    const task_content = document.createElement("div");
+    task_content.classList.add("task-content");
+    const task_p = document.createElement("div");
+    task_p.classList.add("task-p");
+    const p_content = document.createElement("p");
+    p_content.textContent = text_input;
+    task_p.appendChild(p_content);
+    const status_span = create_task_status(text_status);
+    const category_span = create_task_category(text_category);
+    task_content.appendChild(task_p);
+    task_content.appendChild(create_dividing_line());
+    task_content.appendChild(status_span);
+    task_content.appendChild(create_dividing_line());
+    task_content.appendChild(category_span);
+    task.appendChild(task_content);
     task.appendChild(add_delete_task_button());
     tasks.appendChild(task);
     input.value = "";
@@ -98,10 +105,96 @@ add_task_btn.addEventListener("click", (e) => {
   }
 });
 
+function create_task_status(text_status) {
+  const status_span = document.createElement("span");
+  status_span.classList.add("task-status-p");
+  const task_status_p = document.createElement("p");
+  task_status_p.textContent = text_status;
+  status_span.appendChild(task_status_p);
+  const arrow = document.createElement("img");
+  arrow.src = "assets/down-arrow.png";
+  arrow.classList.add("arrow");
+  status_span.appendChild(arrow);
+  const options_status = create_status_options(status_span, task_status_p);
+  status_span.appendChild(options_status);
+  arrow.addEventListener("click", () => {
+    options_status.style.display =
+      options_status.style.display === "none" ? "block" : "none";
+  });
+  return status_span;
+}
+
+function create_task_category(text_category) {
+  const category_span = document.createElement("span");
+  category_span.classList.add("task-category-p");
+  const task_category_p = document.createElement("p");
+  task_category_p.textContent = text_category;
+  category_span.appendChild(task_category_p);
+  const arrow = document.createElement("img");
+  arrow.src = "assets/down-arrow.png";
+  arrow.classList.add("arrow");
+  category_span.appendChild(arrow);
+  const options_category = create_category_options(
+    category_span,
+    task_category_p
+  );
+  category_span.appendChild(options_category);
+  arrow.addEventListener("click", () => {
+    options_category.style.display =
+      options_category.style.display === "none" ? "block" : "none";
+  });
+  return category_span;
+}
+
+function create_status_options(status_span, task_status_p) {
+  const ul = document.createElement("ul");
+  ul.classList.add("options-status");
+  ul.style.display = "none";
+  ["Pendiente", "En proceso", "Completada"].forEach((status) => {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.textContent = status;
+    a.addEventListener("click", function () {
+      task_status_p.textContent = status;
+      ul.style.display = "none";
+    });
+    li.appendChild(a);
+    ul.appendChild(li);
+  });
+  return ul;
+}
+
+function create_category_options(category_span, task_category_p) {
+  const ul = document.createElement("ul");
+  ul.classList.add("options-category");
+  ul.style.display = "none";
+  ["Personal", "Trabajo", "Estudio"].forEach((category) => {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.textContent = category;
+    a.addEventListener("click", function () {
+      task_category_p.textContent = category;
+      ul.style.display = "none";
+    });
+    li.appendChild(a);
+    ul.appendChild(li);
+  });
+
+  return ul;
+}
+
+function create_dividing_line() {
+  const img = document.createElement("img");
+  img.src = "assets/remove.png";
+  img.alt = "Dividing line";
+  img.classList.add("dividing-line");
+  return img;
+}
+
 function add_delete_task_button() {
   const deleteBtn = document.createElement("button");
   deleteBtn.textContent = "X";
-  deleteBtn.className = "delete-task-button";
+  deleteBtn.className = "delete-task-btn";
   deleteBtn.addEventListener("click", (e) => {
     const item = e.target.parentElement;
     tasks.removeChild(item);
