@@ -15,19 +15,23 @@
             <span class="label-search">
                 <input type="text" placeholder="Agrega una tarea..." />
                 <div class="container-task-status-search">
-                    <span class="task-status-search" id="actual-state">Estado...<img src="assets\down-arrow.png" alt="Down arrow"></span>
+                    <span class="task-status-search" id="actual-state">Estado... <img src="assets\down-arrow.png"
+                            alt="Down arrow" class="arrow" id="arrow-status"></span>
                     <ul class="options-status">
                         <li><a>Pendiente</a></li>
                         <li><a>En proceso</a></li>
                         <li><a>Completada</a></li>
+                        <li><a>Estado...</a></li>
                     </ul>
                 </div>
                 <div class="container-task-category-search">
-                    <span class="task-category-search" id="actual-category">Categoría...<img src="assets\down-arrow.png" alt="Down arrow"></span>
+                    <span class="task-category-search" id="actual-category">Categoría...<img src="assets\down-arrow.png"
+                            alt="Down arrow" class="arrow" id="arrow-category"></span>
                     <ul class="options-category">
                         <li><a>Personal</a></li>
                         <li><a>Trabajo</a></li>
                         <li><a>Estudio</a></li>
+                        <li><a>Categoría...</a></li>
                     </ul>
                 </div>
                 <button class="add-task-btn">+</button>
@@ -35,6 +39,7 @@
         </div>
         <div class="container-tasks">
             <span class="label-filter">
+                <!--
                 <select class="task-status">
                     <option value="" disabled selected>Estado...</option>
                     <option value="pendiente">Pendiente</option>
@@ -48,6 +53,8 @@
                     <option value="estudio">Estudio</option>
                 </select>
                 <button class="filter-task-btn">Filtrar</button>
+                Opciones y botón para filtrar las tareas existentes, crear una API para usar una base de datos
+                -->
                 <button class="delete-all-task-btn">Borrar todo</button>
             </span>
             <div class="container-task">
